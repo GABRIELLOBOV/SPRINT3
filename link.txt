@@ -1,0 +1,24 @@
+id de superheroes
+
+67253a212eab3cb6e8b660ec
+6720da78a5795b48f10f698
+6720d94aa5795b48f10f6985
+
+consultas STP3 FINAL
+
+http://localhost:3000/api/heroes/buscar/poderes?valor=puede
+http://localhost:3000/api/heroes/
+http://localhost:3000/api/heroes/mayores-30
+
+
+SPRINT BACKLOG
+npm install mongoose
+node src/app.mjs
+
+http://localhost:3000/dashboard
+
+prueba
+
+http://localhost:3000/heroes/agregar
+
+
