@@ -6,19 +6,30 @@ id de superheroes
 
 consultas STP3 FINAL
 
-http://localhost:3000/api/heroes/buscar/poderes?valor=puede
-http://localhost:3000/api/heroes/
+http://localhost:3000/api/heroes/6720d94aa5795b48f10f6985
 http://localhost:3000/api/heroes/mayores-30
+http://localhost:3000/api/heroes/buscar/atributo/edad?valor=45
+http://localhost:3000/api/heroes/buscar/atributo/nombreReal?valor=gabriel
+http://localhost:3000/api/heroes/buscar/atributo/planetaOrigen?valor=Tierral
+http://localhost:3000/api/heroes/buscar/atributo/poderes?valor=fuerza
+http://localhost:3000/api/heroes/buscar/poderes?valor=puede
 
+
+C:\Users\Usuario\Documents\Modulo3\SPRINT-BACKLOG\src
 
 SPRINT BACKLOG
+npm install method-override
 npm install mongoose
+npm install express
+
 node src/app.mjs
 
-http://localhost:3000/dashboard
+http://localhost:3000/api/dashboard
 
 prueba
 
-http://localhost:3000/heroes/agregar
+http://localhost:3000/api/heroes/agregar
+http://localhost:3000/api/heroes/editar/6720d94aa5795b48f10f6985
+
 
 
