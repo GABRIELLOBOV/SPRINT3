@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+    <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Superhéroe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+
+
+ 
+</head>
+<body>
+    <h1>Editar Superhéroe</h1>
+    
+    <form class="mt-12 text-center"action="/api/heroes/<%= superheroe._id %>?_method=PUT" method="POST">
+        <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
+        <input type="text" name="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>" required>
+        <br><br>
+        <label for="nombreReal">Nombre Real:</label>
+        <input type="text" name="nombreReal" value="<%= superheroe.nombreReal %>" required>
+        <br><br>
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" value="<%= superheroe.edad %>" required>
+        <br><br>
+        <label for="planetaOrigen">Planeta de Origen:</label>
+        <input type="text" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>" required>
+        <br><br>
+        <label for="debilidad">Debilidad:</label>
+        <input type="text" name="debilidad" value="<%= superheroe.debilidad.join(', ') %>" required>
+        <br><br>
+        <label for="poderes">Poderes:</label>
+        <input type="text" name="poderes" value="<%= superheroe.poderes.join(', ') %>" required>
+        <br><br>
+        <label for="aliados">Aliados:</label>
+        <input type="text" name="aliados" value="<%= superheroe.aliados.join(', ') %>" required>
+        <div class="mb-4">
+        <br><br>
+        <label for="enemigos" class="block text-sm font-bold mb-2">Enemigos:</label>
+        <input type="text" name="enemigos" class="shadow appearance-none border rounded w-full py-2 px-3 text-green-700 leading-tight focus:outline-none focus:shadow-outline" value="<%= superheroe.enemigos.join(', ') %>" required>
+        </div>
+        <br><br>
+
+        <button type="submit">
+        
+            <a href="/heroes/<%= superheroe._id %>/editar" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">Editar</a>
+            </button>
+    </form>
+</body>
+</html>
+
+
+
+

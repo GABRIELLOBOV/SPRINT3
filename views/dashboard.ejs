@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+
+
+</head>
+<body>
+    <h1>Lista de Superhéroes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre Real</th>
+                <th>Edad</th>
+                <th>Planeta de Origen</th>
+                <th>Debilidad</th>
+                <th>Poderes</th>
+                <th>Aliados</th>
+                <th>Enemigos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% superheroes.forEach(superheroe => { %>
+                <tr>
+                    <td><%= superheroe.nombreSuperHeroe %></td>
+                    <td><%= superheroe.nombreReal %></td>
+                    <td><%= superheroe.edad %></td>
+                    <td><%= superheroe.planetaOrigen %></td>
+                    <td><%= superheroe.debilidad %></td>
+                    <td><%= superheroe.poderes.join(", ") %></td>
+                    <td><%= superheroe.aliados.join(", ") %></td>
+                    <td><%= superheroe.enemigos.join(", ") %></td>
+                    <td>
+                        <!-- Botón de Editar -->
+                        <br><br><br><section class="mt-12 text-center">
+                        <a href="/heroes/<%= superheroe._id %>/editar" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">Editar</a>
+                        </section>
+
+                        <!-- Botón de Eliminar -->
+                        <form action="/heroes/<%= superheroe._id %>" method="POST" style="display:inline" class="text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">
+                            <input type="hidden" name="_method" value="DELETE"> <!-- Requiere method-override -->
+                            <button type="submit" class="delete-button" onclick="return confirm('¿Estás seguro de eliminar este superhéroe?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
