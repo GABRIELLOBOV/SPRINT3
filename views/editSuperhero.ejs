@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="/css/styles.css">
     
 
-
- 
 </head>
 <body>
     <h1>Editar Superhéroe</h1>
     
-    <form class="mt-12 text-center"action="/api/heroes/<%= superheroe._id %>?_method=PUT" method="POST">
+    <form action="/api/heroes/<%= superheroe._id %>?_method=PUT" method="POST">
+
         <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
         <input type="text" name="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>" required>
+        
         <br><br>
         <label for="nombreReal">Nombre Real:</label>
         <input type="text" name="nombreReal" value="<%= superheroe.nombreReal %>" required>
@@ -44,11 +44,16 @@
 
         <button type="submit">
         
-            <a href="/heroes/<%= superheroe._id %>/editar" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">Editar</a>
+            <a href="/api/heroes/<%= superheroe._id %>/editar" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">Editar</a>
             </button>
     </form>
 </body>
 </html>
+
+
+
+
+
 
 
 
