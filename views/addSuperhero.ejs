@@ -11,30 +11,30 @@
 </head>
 <body>
     <h1 class="text-3xl font-semibold mb-4"> Agregar un Nuevo Superhéroe</h1>
-    <form action="/heroes" method="POST">
+    <form action="/api/heroes" method="POST">
         <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
-        <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe" placeholder="Ej: Superman" required>
+        <input type="text" name="nombreSuperHeroe" placeholder="Nombre del Superhéroe" required>
         <br><br>
         <label for="nombreReal">Nombre Real:</label>
-        <input type="text" id="nombreReal" name="nombreReal" placeholder="Ej: Clark Kent" required>
+        <input type="text" name="nombreReal" placeholder="Nombre Real" required>
         <br><br>
         <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" placeholder="Ej: 30" min="1" required>
+        <input type="number" name="edad" placeholder="Edad" min="1" required>
         <br><br>
         <label for="planetaOrigen">Planeta de Origen:</label>
-        <input type="text" id="planetaOrigen" name="planetaOrigen" placeholder="Ej: Krypton" required>
+        <input type="text" name="planetaOrigen" placeholder="Planeta de Origen" required>
         <br><br>
         <label for="debilidad">Debilidad:</label>
-        <input type="text" id="debilidad" name="debilidad" placeholder="Ej: Kriptonita" required>
+        <input type="text" name="poderes" placeholder="Poderes (separados por comas)" required>
         <br><br>
         <label for="poderes">Poderes:</label>
-        <input type="text" id="poderes" name="poderes" placeholder="Ej: Fuerza, vuelo" required>
+        <input type="text" name="debilidad" placeholder="Debilidades (separadas por comas)" required>
         <br><br>
         <label for="aliados">Aliados:</label>
-        <input type="text" id="aliados" name="aliados" placeholder="Ej: Batman, Wonder Woman" required>
+        <input type="text" name="aliados" placeholder="Aliados (separadas por comas)" required>
         <br><br>
         <label for="enemigos">Enemigos:</label>
-        <input type="text" id="enemigos" name="enemigos" placeholder="Ej: Lex Luthor" required>
+        <input type="text" name="enemigos" name="enemigos" placeholder="Enemigos (separadas por comas)" required>
 <br><br><br><section class="mt-12 text-center">
         <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">Agregar</button><section class="mt-12 text-center"></section>
     </form>
