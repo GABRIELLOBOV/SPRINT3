@@ -6,6 +6,7 @@ import {
     buscarSuperHeroesPorAtributo,
 }                                     from '../services/superheroesService.mjs';
 
+import SuperHeroRepository from '../repositories/SuperHeroRepository.mjs';
 
 import { renderizarListaSuperHeroes } from '../views/responseView.mjs';
 
@@ -37,39 +38,77 @@ export const renderizarDashboard = async (req, res) => {
 };
 
 // Agregar un superhéroe
+
 export const agregarSuperheroeController = async (req, res) => {
     try {
-        const nuevoSuperheroe = req.body; // Asegúrate de que los datos lleguen correctamente
-        await SuperHeroRepository.crear(nuevoSuperheroe); // Implementa este método en el repositorio
-        res.redirect('/api/heroes'); // Redirige a la lista de superhéroes después de agregar
+        const { nombreSuperHeroe, nombreReal, edad, planetaOrigen, poderes, debilidad } = req.body;
+
+        // Valida que poderes y debilidad no sean undefined o vacíos
+        if (!poderes || !debilidad) {
+            return res.status(400).send({ mensaje: "Los campos 'poderes' y 'debilidad' son obligatorios" });
+        }
+
+        // Transforma los campos de texto en arrays
+        const poderesArray = poderes.split(',').map(p => p.trim());
+        const debilidadArray = debilidad.split(',').map(d => d.trim());
+
+        const nuevoSuperheroe = {
+            nombreSuperHeroe,
+            nombreReal,
+            edad,
+            planetaOrigen,
+            poderes: poderesArray,
+            debilidad: debilidadArray,
+        };
+
+        await SuperHeroRepository.crear(nuevoSuperheroe);
+        res.redirect('/api/heroes');
     } catch (error) {
         res.status(500).send({ mensaje: "Error al agregar superhéroe", error: error.message });
     }
+    console.log("Datos recibidos:", req.body);
 };
+
 
 
 // Editar un superhéroe
 export const editarSuperheroeController = async (req, res) => {
     const { id } = req.params;
-    const datosActualizados = req.body;
+    const { nombreSuperHeroe, nombreReal, edad, planetaOrigen, poderes, debilidad } = req.body;
 
-    console.log("ID recibido:", id);
-    console.log("Datos recibidos:", datosActualizados);
+    console.log("ID del superhéroe a editar:", id);
+    console.log("Datos recibidos para edición:", req.body);
 
     try {
+        if (!nombreSuperHeroe || !nombreReal || !edad || !planetaOrigen) {
+            return res.status(400).send({ mensaje: "Todos los campos son obligatorios" });
+        }
+
+        const poderesArray = poderes.split(',').map(p => p.trim());
+        const debilidadArray = debilidad.split(',').map(d => d.trim());
+
+        const datosActualizados = {
+            nombreSuperHeroe,
+            nombreReal,
+            edad,
+            planetaOrigen,
+            poderes: poderesArray,
+            debilidad: debilidadArray,
+        };
+
         const resultado = await SuperHeroRepository.actualizarPorId(id, datosActualizados);
+        console.log("Resultado de la actualización:", resultado);
+
         if (!resultado) {
             return res.status(404).send({ mensaje: "Superhéroe no encontrado" });
         }
+
         res.redirect('/api/heroes');
     } catch (error) {
-        console.error("Error al actualizar:", error.message);
+        console.error("Error al editar superhéroe:", error.message);
         res.status(500).send({ mensaje: "Error al editar superhéroe", error: error.message });
     }
 };
-
-
-
 
 // Eliminar un superhéroe
 export const eliminarSuperheroeController = async (req, res) => {
@@ -150,3 +189,4 @@ export const obtenerSuperHeroesMayoresDe30Controller = async (req, res) => {
         res.status(500).send({ mensaje: "Error en el servidor", error: error.message });
     }
 };
+
