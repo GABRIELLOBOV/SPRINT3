@@ -59,11 +59,33 @@ class SuperHeroRepository extends IRepository {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             throw new Error("ID no válido");
         }
-        
-        const resultado = await SuperHero.findByIdAndUpdate(id, datosActualizados, { new: true });
-        return resultado;
+        console.log("Actualizando superhéroe con ID:", id);
+        console.log("Datos para actualizar:", datosActualizados);
+        return await SuperHero.findByIdAndUpdate(id, datosActualizados, { new: true });
     }
     
+    
+/*Explicación: findByIdAndUpdatebusca el documento por su ID y lo actualiza con los datos proporcionados.
+{ new: true } asegura de devolver el documento actualizado.*/
+
+
+    //crear superheroes
+        
+    async crear(superheroe) {
+        return await SuperHero.create(superheroe);
+    }
+
+    /*
+eliminar superheroes  
+async eliminar(id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new Error("ID no válido");
+        }
+        return await SuperHero.findByIdAndDelete(id);
+        }
+        module.exports = SuperHeroService;
+    */
+
 }
 
 export default new SuperHeroRepository();
